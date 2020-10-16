@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Formulário</title>
+</head>
+<body>
+  <form>
+    <fieldset>
+      <legend>Formulário</legend>
+
+        <label for="name">Name Completo:</label>
+        <input type="text" name="nomecompleto">
+    <br>
+    <br>
+        <label for="Data">Data de Nascimento:</label>
+  		<input type="date" id="Data" name="Data">
+    <br>
+   	<br>
+        <label for="sexo">Sexo:</label>
+        <input type="radio" name="sexo"> Masculino
+        <input type="radio" name="sexo"> Feminino
+    <br>
+    <br>
+        <label for="name">Hobby: </label>
+        <input type="checkbox" name="Hobby">
+        <label for="name">Futebol</label>
+        <input type="checkbox" name="Hobby">
+        <label for="name">Pescar</label>
+        <input type="checkbox" name="Hobby">
+        <label for="name">Ler</label>
+        <input type="checkbox" name="Hobby">
+        <label for="name">Academia</label>
+        <input type="checkbox" name="Hobby">
+        <label for="name">Natação</label>
+        <input type="checkbox" name="Hobby">
+        <label for="name">Ciclismo</label>
+    <br>
+    <br>
+        <label for="estado">Estado</label>
+        <select name="estado">
+         <option selected disabled>Selecione o Estado</option>
+         <option value="MS">Mato Grosso do Sul</option>
+         <option value="SP">São Paulo</option>
+         <option value="MG">Minas Gerais</option>
+         <option value="PR">Paraná</option>
+         <option value="RJ">Rio de Janeiro</option>
+         <option value="CE">Ceara</option>
+         <option value="BA">Bahia</option>
+         <option value="SC">Santa Catarina</option>
+         <option value="RS">Rio Grande do Sul</option>
+         <option value="RN">Rio Grande do Norte</option>
+         <option value="MA">Manaus</option>
+         <option value="TO">Tocantins</option>
+         <option value="AC">Acre</option>
+         <option value="GO">Goias</option>
+         <option value="MT">Mato Grosso</option>
+         <option value="SE">Sergipe</option>
+         <option value="AL">Alagoas</option>
+        </select>  
+    <br>
+    <br>
+        <legend>Mensagem:</legend>
+        <textarea name="msg" rows="5" cols="30"></textarea>
+    <br>
+<button>Incluir</button>
+<button>Editar</button>
+<button>Excluir</button>
+<button>Limpar</button>
+</fieldset>
+</form>
+
+<table id="formulario">
+	<tr>
+		<th>Nome</th>
+		<th>Nascimento</th>
+		<th>Sexo</th>
+		<th>Hobby</th>
+		<th>Estado</th>
+		<th>Mensagem</th>
+	</tr>
+</table>
+<script src="script.js"></script>
+</body>
+</html>
