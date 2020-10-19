@@ -2,42 +2,43 @@
 <html>
 <head>
 <title>Formulário</title>
+<script type="text/javascript" src="script.js"></script>
+<style type="text/css">
+	table tr td{
+		width: 140px;
+	}
+</style>
 </head>
 <body>
-  <form>
+	<div id="formdados">  
+		<form name="formdados">
     <fieldset>
       <legend>Formulário</legend>
 
-        <label for="name">Name Completo:</label>
-        <input type="text" name="nomecompleto">
+        <label for="name" id="name">Name Completo:</label>
+        <input type="text" name="nome" id="nome">
     <br>
     <br>
         <label for="Data">Data de Nascimento:</label>
-  		<input type="date" id="Data" name="Data">
+  		<input type="date" id="data" name="Data">
     <br>
    	<br>
         <label for="sexo">Sexo:</label>
-        <input type="radio" name="sexo"> Masculino
-        <input type="radio" name="sexo"> Feminino
+        <input type="radio" name="sexo" id="sexoMasculino" value="Masculino"> Masculino
+        <input type="radio" name="sexo" id="sexoFeminino" value="Feminino"> Feminino
     <br>
     <br>
         <label for="name">Hobby: </label>
-        <input type="checkbox" name="Hobby">
-        <label for="name">Futebol</label>
-        <input type="checkbox" name="Hobby">
-        <label for="name">Pescar</label>
-        <input type="checkbox" name="Hobby">
-        <label for="name">Ler</label>
-        <input type="checkbox" name="Hobby">
-        <label for="name">Academia</label>
-        <input type="checkbox" name="Hobby">
-        <label for="name">Natação</label>
-        <input type="checkbox" name="Hobby">
-        <label for="name">Ciclismo</label>
+        <label><input type="checkbox" name="hobby" id="Futebol" value="Futebol">Futebol</label>
+        <label><input type="checkbox" name="hobby" id="Pescar" value="Pescar">Pescar</label>
+        <label><input type="checkbox" name="hobby" id="Ler" value="Ler">Ler</label>
+        <label><input type="checkbox" name="hobby" id="Academia" value="Academia">Academia</label>
+        <label><input type="checkbox" name="hobby" id="Natação" value="Natação">Natação</label>
+        <label><input type="checkbox" name="hobby" id="Ciclismo" value="Ciclismo">Ciclismo</label>
     <br>
     <br>
         <label for="estado">Estado</label>
-        <select name="estado">
+        <select name="estado" id="estado">
          <option selected disabled>Selecione o Estado</option>
          <option value="MS">Mato Grosso do Sul</option>
          <option value="SP">São Paulo</option>
@@ -60,25 +61,30 @@
     <br>
     <br>
         <legend>Mensagem:</legend>
-        <textarea name="msg" rows="5" cols="30"></textarea>
+        <textarea name="msg" rows="5" cols="30" id="msg"></textarea>
     <br>
-<button>Incluir</button>
-<button>Editar</button>
-<button>Excluir</button>
-<button>Limpar</button>
+    <button type="button"onclick="cadPessoa(nome.value, data.value, sexo.value, hobby.value, estado.value, msg.value)">Incluir</button>
+    <button type="button" onclick="altPessoa(nome.value, data.value, sexo.value, hobby.value, estado.value, msg.value)">Editar</button>
+    <button type="button" onclick="deletar()">Excluir</button>
+
 </fieldset>
 </form>
+</div>
+<br>
+<div>
 
-<table id="formulario">
-	<tr>
-		<th>Nome</th>
-		<th>Nascimento</th>
-		<th>Sexo</th>
-		<th>Hobby</th>
-		<th>Estado</th>
-		<th>Mensagem</th>
-	</tr>
+<table id="formulario" >
+	<thead>
+	   <tr>
+		<td><b> Nome</b></td>
+		<td><b>Nascimento</b></td>
+		<td><b>Sexo</b></td>
+		<td><b>Hobby</b></td>
+		<td><b>Estado</b></td>
+		<td><b>Mensagem</b></td>
+	   </tr>
+	</thead>
 </table>
-<script src="script.js"></script>
+</div>
 </body>
 </html>
