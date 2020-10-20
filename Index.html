@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="formdados">  
-		<form name="formdados">
+		<form name="formularioDados" id="formularioDados" onsubmit="return validacao();">
     <fieldset>
       <legend>Formulário</legend>
 
@@ -57,18 +57,23 @@
          <option value="MT">Mato Grosso</option>
          <option value="SE">Sergipe</option>
          <option value="AL">Alagoas</option>
+         <option value="RO">Rondonia</option>
+         <option value="RR">Roraima</option>
         </select>  
     <br>
     <br>
         <legend>Mensagem:</legend>
         <textarea name="msg" rows="5" cols="30" id="msg"></textarea>
     <br>
-    <button type="button"onclick="cadPessoa(nome.value, data.value, sexo.value, hobby.value, estado.value, msg.value)">Incluir</button>
-    <button type="button" onclick="altPessoa(nome.value, data.value, sexo.value, hobby.value, estado.value, msg.value)">Editar</button>
+    </form>
+    <input type="button" name="Incluir" value="Incluir" onclick="cadPessoa(nome.value, data.value, sexo.value, hobby.value, estado.value, msg.value);">
+    <button type="button" onclick="alterDados(nome.value, data.value, sexo.value, hobby.value, estado.value, msg.value)">Editar</button>
     <button type="button" onclick="deletar()">Excluir</button>
+    <button type="reset" id="botao_resetar" value="Limpar Formulário">Limpar</button>
+
 
 </fieldset>
-</form>
+
 </div>
 <br>
 <div>
