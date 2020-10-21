@@ -1,95 +1,99 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Formulário</title>
-<script type="text/javascript" src="script.js"></script>
-<style type="text/css">
-	table tr td{
-		width: 140px;
-	}
-</style>
+    <title>
+        Formulario
+    </title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-	<div id="formdados">  
-		<form name="formularioDados" id="formularioDados" onsubmit="return validacao();">
-    <fieldset>
+	    <fieldset>
       <legend>Formulário</legend>
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();validacao();" autocomplete="off" id="formularioDados">
+                    <div>
+                        <label>Nome Completo:*</label><label class="validation-error hide" id="nomeValidationError">
+						Este campo é obrigatório.</label>
+                        <input type="text" name="nome" id="nome">
+                    </div>
+                    <div>
+                        <label>Data de Nascimento:</label>
+                        <input type="date" name="data" id="data">
+                    </div>
+                    <div>
+                        <label>Sexo:</label>
+                        <input type="radio" name="sexo" id="sexoMasculino" value="Masculino"> Masculino
+        				<input type="radio" name="sexo" id="sexoFeminino" value="Feminino"> Feminino
+                    </div>
+                    <div>
+                        <label for="name">Hobby: </label>
+						<label><input type="checkbox" name="hobby" id="Futebol" value="Futebol">Futebol</label>
+        				<label><input type="checkbox" name="hobby" id="Pescar" value="Pescar">Pescar</label>
+       				 	<label><input type="checkbox" name="hobby" id="Ler" value="Ler">Ler</label>
+        				<label><input type="checkbox" name="hobby" id="Academia" value="Academia">Academia</label>
+        				<label><input type="checkbox" name="hobby" id="Natação" value="Natação">Natação</label>
+        				<label><input type="checkbox" name="hobby" id="Ciclismo" value="Ciclismo">Ciclismo</label>
+                    </div>
+                    <div>
+                        
+                        <label for="estado">Estado:</label>
+        					<select name="estado" id="estado" value="Selecione o Estado">
+        				    <option selected disabled>Selecione o Estado</option>
+         					<option value="MS">Mato Grosso do Sul</option>
+         					<option value="SP">São Paulo</option>
+         					<option value="MG">Minas Gerais</option>
+         					<option value="PR">Paraná</option>
+         					<option value="RJ">Rio de Janeiro</option>
+         					<option value="CE">Ceara</option>
+         					<option value="BA">Bahia</option>
+         					<option value="SC">Santa Catarina</option>
+         					<option value="RS">Rio Grande do Sul</option>
+         					<option value="RN">Rio Grande do Norte</option>
+         					<option value="MA">Manaus</option>
+         					<option value="TO">Tocantins</option>
+         					<option value="AC">Acre</option>
+         					<option value="GO">Goias</option>
+         					<option value="MT">Mato Grosso</option>
+         					<option value="SE">Sergipe</option>
+         					<option value="AL">Alagoas</option>
+         					<option value="RO">Rondonia</option>
+         					<option value="RR">Roraima</option>
+        					</select>  
+                    </div>
+                    <div>
+                        <legend>Mensagem:</legend>
+        					<textarea type="text" name="msg" rows="5" cols="30" id="msg"></textarea>
+                    </div>
+                    <div  class="form-action-buttons">
+                        <button type="submit" value="Incluir">Incluir</button>
+                        <button type="reset" id="botao_resetar" value="Limpar">Limpar</button>
+                    </div>
+                </form>
+                </fieldset>
+            </td>
+        </tr>
+    </table>
+                <table class="list" id="tabela">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data de Nascimento</th>
+                            <th>Sexo</th>
+                            <th>Hobby</th>
+                            <th>Estado</th>
+                            <th>Mensagem</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-        <label for="name" id="name">Name Completo:</label>
-        <input type="text" name="nome" id="nome">
-    <br>
-    <br>
-        <label for="Data">Data de Nascimento:</label>
-  		<input type="date" id="data" name="Data">
-    <br>
-   	<br>
-        <label for="sexo">Sexo:</label>
-        <input type="radio" name="sexo" id="sexoMasculino" value="Masculino"> Masculino
-        <input type="radio" name="sexo" id="sexoFeminino" value="Feminino"> Feminino
-    <br>
-    <br>
-        <label for="name">Hobby: </label>
-        <label><input type="checkbox" name="hobby" id="Futebol" value="Futebol">Futebol</label>
-        <label><input type="checkbox" name="hobby" id="Pescar" value="Pescar">Pescar</label>
-        <label><input type="checkbox" name="hobby" id="Ler" value="Ler">Ler</label>
-        <label><input type="checkbox" name="hobby" id="Academia" value="Academia">Academia</label>
-        <label><input type="checkbox" name="hobby" id="Natação" value="Natação">Natação</label>
-        <label><input type="checkbox" name="hobby" id="Ciclismo" value="Ciclismo">Ciclismo</label>
-    <br>
-    <br>
-        <label for="estado">Estado</label>
-        <select name="estado" id="estado">
-         <option selected disabled>Selecione o Estado</option>
-         <option value="MS">Mato Grosso do Sul</option>
-         <option value="SP">São Paulo</option>
-         <option value="MG">Minas Gerais</option>
-         <option value="PR">Paraná</option>
-         <option value="RJ">Rio de Janeiro</option>
-         <option value="CE">Ceara</option>
-         <option value="BA">Bahia</option>
-         <option value="SC">Santa Catarina</option>
-         <option value="RS">Rio Grande do Sul</option>
-         <option value="RN">Rio Grande do Norte</option>
-         <option value="MA">Manaus</option>
-         <option value="TO">Tocantins</option>
-         <option value="AC">Acre</option>
-         <option value="GO">Goias</option>
-         <option value="MT">Mato Grosso</option>
-         <option value="SE">Sergipe</option>
-         <option value="AL">Alagoas</option>
-         <option value="RO">Rondonia</option>
-         <option value="RR">Roraima</option>
-        </select>  
-    <br>
-    <br>
-        <legend>Mensagem:</legend>
-        <textarea name="msg" rows="5" cols="30" id="msg"></textarea>
-    <br>
-    </form>
-    <input type="button" name="Incluir" value="Incluir" onclick="cadPessoa(nome.value, data.value, sexo.value, hobby.value, estado.value, msg.value);">
-    <button type="button" onclick="alterDados(nome.value, data.value, sexo.value, hobby.value, estado.value, msg.value)">Editar</button>
-    <button type="button" onclick="deletar()">Excluir</button>
-    <button type="reset" id="botao_resetar" value="Limpar Formulário">Limpar</button>
-
-
-</fieldset>
-
-</div>
-<br>
-<div>
-
-<table id="formulario" >
-	<thead>
-	   <tr>
-		<td><b> Nome</b></td>
-		<td><b>Nascimento</b></td>
-		<td><b>Sexo</b></td>
-		<td><b>Hobby</b></td>
-		<td><b>Estado</b></td>
-		<td><b>Mensagem</b></td>
-	   </tr>
-	</thead>
-</table>
-</div>
+                    </tbody>
+                </table>
+    <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,157 +1,156 @@
-var dados, index;
+var selectedRow = null
+var sexo
+var hobby
 
 function validacao() {
-	if(document.formularioDados.nome.value == ""){
-		alert("Por Favor, preencha o campo nome.");
-		document.formularioDados.nome.focus();
-		return false;
-	}
+    if (validate()) {
+        var dadosFormulario = lerDados();
+        if (selectedRow == null)
+            inserirDados(dadosFormulario);
+        else
+            atualizarRegistro(dadosFormulario);
+        resetarFormulario();
+    }
+}
+
+function lerDados() {
+    debugger;
+    var dadosFormulario = {};
+    dadosFormulario["nome"] = document.getElementById("nome").value;
+    dadosFormulario["data"] = document.getElementById("data").value;
+   // dadosFormulario["sexo"] = document.getElementById("sexo").value;
+    debugger;
+    var opcoesSexo = document.getElementsByName("sexo");
+
+    for(i=0; i<opcoesSexo.length; i++){
+        if(opcoesSexo[i].checked){
+            var sexo = opcoesSexo[i].value;
+            dadosFormulario["sexo"] = sexo;
+        }
+    }
+   // dadosFormulario["hobby"] = document.getElementById("hobby").value;
+    var habilidade = document.getElementsByName("hobby");
+    var hobby = "";
+
+    for(i=0; i<habilidade.length; i++){
+        if(habilidade[i].checked) {
+            hobby += habilidade[i].value+",";
+            dadosFormulario["hobby"] = hobby;
+        }
+    }
+    dadosFormulario["estado"] = document.getElementById("estado").value;
+    dadosFormulario["msg"] = document.getElementById("msg").value;
+    return dadosFormulario;
+}
+
+function inserirDados(dado) {
+    debugger;
+    var table = document.getElementById("tabela").getElementsByTagName('tbody')[0];
+    var novaLinha = table.insertRow(table.length);
     
+    cell1 = novaLinha.insertCell(0);
+    cell1.innerHTML = dado.nome;
+    cell2 = novaLinha.insertCell(1);
+    cell2.innerHTML = dado.data;
+    cell3 = novaLinha.insertCell(2);
+    cell3.innerHTML = dado.sexo;
+    cell4 = novaLinha.insertCell(3);
+    cell4.innerHTML = dado.hobby;
+    cell5 = novaLinha.insertCell(4);
+    cell5.innerHTML = dado.estado;
+    cell6 = novaLinha.insertCell(5);
+    cell6.innerHTML = dado.msg;
+    cell6 = novaLinha.insertCell(6);
+    cell6.innerHTML = `<a onClick="Editar(this)">Editar</a>
+                       <a onClick="deletar(this)">Delete</a>`;
 }
 
-function cadPessoa(nome, data, sexo, hobby, estado, msg){
-	dados = document.getElementById("formulario")
-	var qtdLinhas = dados.rows.length;
-	var linha = dados.insertRow(qtdLinhas);
-	var linhaParam;
-
-debugger;
-
-	//validando os hobby
-	var skillLength = document.formularioDados.hobby.length;
-	var hobby = "";
-
-	for(i=0; i<skillLength; i++){
-		var skillChecked = document.formularioDados.hobby[i].checked;
-		if(skillChecked) {
-
-			hobby += document.formularioDados.hobby[i].value+", ";
-		}
-	}
-	// validando o sexo
-	var sexo = document.formularioDados.sexo;
-
-	for(i=0; i<sexo.length; i++){
-		if(sexo[i].checked){
-			sexo[i].checked = true;
-			sexo = document.formularioDados.sexo[i].value;
-		}
-	}
-	//inserindo as colunas
-	var cellNome = linha.insertCell(0);
-	var cellData = linha.insertCell(1);
-	var cellSexo = linha.insertCell(2);
-	var cellHobby = linha.insertCell(3);
-	var cellEstado = linha.insertCell(4);
-	var cellMsg = linha.insertCell(5);
-
-	//inserindo dados na tabela
-	cellNome.innerHTML = nome;
-	cellData.innerHTML = data;
-	cellSexo.innerHTML = sexo;
-	cellHobby.innerHTML = hobby;
-	cellEstado.innerHTML = estado;
-	cellMsg.innerHTML = msg;
-
+function resetarFormulario() {
+    debugger;
     document.getElementById("formularioDados").reset();
-	preencherAlteracao();
-
+    document.getElementById("nome").value = "";
+    document.getElementById("data").value = "";
+    document.getElementById("estado").value = "";
+    document.getElementById("msg").value = "";
+    selectedRow = null;
 }
 
-     
-function alterDados(nome, data, sexo, hobby, estado, msg){
-	//alterando os dados da tabela
-	var skillLength = document.formularioDados.hobby.length;
-	var hobby = "";
-	for(i=0; i<skillLength; i++){
-		var skillChecked = document.formularioDados.hobby[i].checked;
-		if(skillChecked) {
+function Editar(td) {
+    debugger;
+    selectedRow = td.parentElement.parentElement;
 
-			hobby += document.formularioDados.hobby[i].value+", ";
-		}
-	}
+    document.getElementById("nome").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("data").value = selectedRow.cells[1].innerHTML;
+    //document.getElementsByName("sexo").value = selectedRow.cells[2].innerHTML;
+    var sexo  = selectedRow.cells[2].innerText;
+        if(sexo == "Masculino")
+        {
+            document.getElementById("sexoMasculino").checked = true;
+        }
+        else  if(sexo == "Feminino")
+            {
+            document.getElementById("sexoFeminino").checked = true;
+        }
 
-	dados.rows[index].cells[0].innerHTML = nome;
-	dados.rows[index].cells[1].innerHTML = data;
-	dados.rows[index].cells[2].innerHTML = sexo;
-	dados.rows[index].cells[3].innerText = hobby;
-	dados.rows[index].cells[4].innerHTML = estado;
-	dados.rows[index].cells[5].innerHTML = msg;
+    var hobby = selectedRow.cells[3].innerText;
+        var lista = hobby.split(",");
+        for(var i=0; i<lista.length; i++){
+            
+            var hobbyAtual = lista[i];
 
+            if(hobbyAtual == "Futebol")
+            {
+                document.getElementById("Futebol").checked = true;
+            }
+            else if(hobbyAtual == "Pescar" || hobbyAtual == " Pescar")
+            {
+                document.getElementById("Pescar").checked = true;
+            }
+            else if(hobbyAtual == "Ler" || hobbyAtual == " Ler")
+            {
+                document.getElementById("Ler").checked = true;
+            }
+            else if(hobbyAtual == "Academia" || hobbyAtual == " Academia")
+            {
+                document.getElementById("Academia").checked = true;
+            }
+            else if(hobbyAtual == "Natação" || hobbyAtual == "Natação")
+            {
+                document.getElementById("Natação").checked = true;
+            }
+            else if(hobbyAtual == "Ciclismo" || hobbyAtual == "Ciclismo")
+            {
+                document.getElementById("Ciclismo").checked = true;
+            }   
+        }
+    document.getElementById("estado").value = selectedRow.cells[4].innerHTML;
+    document.getElementById("msg").value = selectedRow.cells[5].innerHTML;
+}
+function atualizarRegistro(dadosFormulario) {
+    selectedRow.cells[0].innerHTML = dadosFormulario.nome;
+    selectedRow.cells[1].innerHTML = dadosFormulario.data;
+    selectedRow.cells[2].innerHTML = dadosFormulario.sexo;
+    selectedRow.cells[3].innerHTML = dadosFormulario.hobby;
+    selectedRow.cells[4].innerHTML = dadosFormulario.estado;
+    selectedRow.cells[5].innerHTML = dadosFormulario.msg;
 }
 
-function preencherAlteracao() {
-	for(i = 0; i < dados.rows.length; i++){
-
-		dados.rows[i].onclick = function()
-		{
-			
-		document.getElementById("formularioDados").reset();
-		index = this.rowIndex;
-		document.getElementById("nome").value = dados.rows[index].cells[0].innerText;
-		document.getElementById("data").value = dados.rows[index].cells[1].innerText;
-		document.getElementById("estado").value = dados.rows[index].cells[4].innerText;
-		document.getElementById("msg").value = dados.rows[index].cells[5].innerText;
-
-		var sexo  = dados.rows[index].cells[2].innerText;
-		if(sexo == "Masculino")
-		{
-			document.getElementById("sexoMasculino").checked = true;
-		}
-		else  if(sexo == "Feminino")
-			{
-			document.getElementById("sexoFeminino").checked = true;
-		}
-		debugger;
-		var hobby = dados.rows[index].cells[3].innerText;
-		var lista = hobby.split(",");
-		for(var i=0; i<lista.length; i++){
-			
-			var hobbyAtual = lista[i];
-
-			if(hobbyAtual == "Futebol")
-			{
-				document.getElementById("Futebol").checked = true;
-		    }
-		    else if(hobbyAtual == " Pescar")
-			{
-				document.getElementById("Pescar").checked = true;
-		    }
-		    else if(hobbyAtual == " Ler")
-			{
-				document.getElementById("Ler").checked = true;
-		    }
-		    else if(hobbyAtual == " Academia")
-			{
-				document.getElementById(" Acadmeia").checked = true;
-		    }
-		    else if(hobbyAtual == " Natação")
-			{
-				document.getElementById("Natação").checked = true;
-		    }
-		    else if(hobbyAtual == " Ciclismo")
-			{
-				document.getElementById("Ciclismo").checked = true;
-		    }	
-		}
-		
-	}
-
-  }
-  document.getElementById("formularioDados").reset();
+function deletar(td) {
+    if (confirm('Tem certeza que deseja deletar este registro ?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("tabela").deleteRow(row.rowIndex);
+        resetarFormulario();
+    }
 }
-
-function deletar(){
-
-	for(var i=0; i<dados.rows.length; i++)
-	{
-		if (index == i){
-			dados.deleteRow(index);
-			return;
-	}
+function validate() {
+    isValid = true;
+    if (document.getElementById("nome").value == "") {
+        isValid = false;
+        document.getElementById("fullNameValidationError");
+    } else {
+        isValid = true;
+        if (!document.getElementById("fullNameValidationError"))
+            document.getElementById("fullNameValidationError");
+    }
+    return isValid;
 }
-document.getElementById("formularioDados").reset();
-}
-
-
-

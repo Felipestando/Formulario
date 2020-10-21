@@ -1,0 +1,79 @@
+table{
+    width: 100%;
+}
+
+table{
+    border-collapse: collapse;
+}
+table.list{
+    width:100%;
+}
+
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even),table.list thead>tr {
+    background-color: #dddddd;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-shadow: 2px 2px 5px red;
+}
+
+button[type=submit]{
+	border: 2px solid green;
+    border-radius: 12px;
+	margin-right: 100px;
+    margin-left: 1px;
+    width: 20%;
+    background-color: #000;
+    color: #fffffff7;
+    padding: 14px 20px;
+    cursor: pointer;
+    text-shadow: -1px 0px 5px white;
+    font-weight: 900;
+}
+
+button[type=reset]{
+	border: 2px solid green;
+    border-radius: 12px;
+	margin-right: 160px;
+  	margin-left: 1px;
+    width: 20%;
+    background-color: #000;
+    color: #fffffff7;
+    padding: 14px 20px;
+    cursor: pointer;
+    text-shadow: -1px 0px 5px white;
+    font-weight: 900;
+
+}
+
+form div.form-action-buttons{
+    text-align: right;
+}
+
+a{
+    cursor: pointer;
+    color: red;
+    margin-right: 4px;
+}
+
+label.validation-error{
+    color:   red;
+    margin-left: 5px;
+}
+
+.hide{
+    display:none;
+}
