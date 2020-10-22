@@ -16,21 +16,21 @@
             <td>
                 <form onsubmit="event.preventDefault();validacao();" autocomplete="off" id="formularioDados">
                     <div>
-                        <label>Nome Completo:*</label><label class="validation-error hide" id="nomeValidationError">
+                        <label class="fonte">Nome Completo:*</label><label class="validation-error hide" id="nomeValidationError">
 						Este campo é obrigatório.</label>
                         <input type="text" name="nome" id="nome">
                     </div>
                     <div>
-                        <label>Data de Nascimento:</label>
+                        <label class="fonte">Data de Nascimento:</label>
                         <input type="date" name="data" id="data">
                     </div>
                     <div>
-                        <label>Sexo:</label>
+                        <label class="fonte">Sexo:</label>
                         <input type="radio" name="sexo" id="sexoMasculino" value="Masculino"> Masculino
         				<input type="radio" name="sexo" id="sexoFeminino" value="Feminino"> Feminino
                     </div>
                     <div>
-                        <label for="name">Hobby: </label>
+                        <label for="name" class="fonte">Hobby: </label>
 						<label><input type="checkbox" name="hobby" id="Futebol" value="Futebol">Futebol</label>
         				<label><input type="checkbox" name="hobby" id="Pescar" value="Pescar">Pescar</label>
        				 	<label><input type="checkbox" name="hobby" id="Ler" value="Ler">Ler</label>
@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         
-                        <label for="estado">Estado:</label>
+                        <label for="estado" class="fonte">Estado:</label>
         					<select name="estado" id="estado" value="Selecione o Estado">
         				    <option selected disabled>Selecione o Estado</option>
          					<option value="MS">Mato Grosso do Sul</option>
@@ -65,7 +65,7 @@
         					</select>  
                     </div>
                     <div>
-                        <legend>Mensagem:</legend>
+                        <legend class="fonte">Mensagem:</legend>
         					<textarea type="text" name="msg" rows="5" cols="30" id="msg"></textarea>
                     </div>
                     <div  class="form-action-buttons">

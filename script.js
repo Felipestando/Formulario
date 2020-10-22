@@ -68,10 +68,10 @@ function inserirDados(dado) {
 function resetarFormulario() {
     debugger;
     document.getElementById("formularioDados").reset();
-    document.getElementById("nome").value = "";
-    document.getElementById("data").value = "";
-    document.getElementById("estado").value = "";
-    document.getElementById("msg").value = "";
+    //document.getElementById("nome").value = "";
+   //document.getElementById("data").value = "";
+    //document.getElementById("estado").value = "";
+   // document.getElementById("msg").value = "";
     selectedRow = null;
 }
 
