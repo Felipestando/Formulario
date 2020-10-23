@@ -2,7 +2,12 @@ table{
     width: 100%;
   border-radius: 5px;
   background-color: #f2f2f2;
-  padding: 20px;
+  padding: 100px;
+  height: 250px;
+}
+legend.form{
+    text-align: center;
+    font-size: 30px;
 }
 
 table{
@@ -10,13 +15,14 @@ table{
 }
 table.list{
     width:100%;
+    margin-top: 0px;
 }
 
 
 td, th {
     border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+    text-align: center;
+    padding: 20px;
 }
 tr:nth-child(even),table.list thead>tr {
     background-color: #dddddd;
@@ -27,9 +33,7 @@ label.fonte{
 legend.fonte{
     font-family: Impact, Charcoal, sans-serif;
 }
-form{
-    align
-}
+
 input[type=text] {
     width: 50%;
     padding: 12px 20px;
@@ -51,7 +55,7 @@ button[type=submit]{
     cursor: pointer;
     text-shadow: -1px 0px 5px white;
     font-weight: 900;
-    content: "";
+    margin: 10px 40px;
 
 }
 
@@ -59,6 +63,7 @@ button[type=reset]{
 	border: 2px solid black;
     border-radius: 12px;
     width: 10%;
+    border-left: -10px;
     background-color: #000;
     color: #fffffff7;
     padding: 7px 15px;
@@ -66,14 +71,14 @@ button[type=reset]{
     text-shadow: -1px 0px 5px white;
     font-weight: 900;
     content: "";
-
     clear: both;
     margin: 10px 40px;
 
 }
 
 form div.form-action-buttons{
-    text-align: right;
+    width: 1000px;
+    margin: 0 auto;
 
 }
 

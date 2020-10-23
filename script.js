@@ -61,8 +61,7 @@ function inserirDados(dado) {
     cell6 = novaLinha.insertCell(5);
     cell6.innerHTML = dado.msg;
     cell6 = novaLinha.insertCell(6);
-    cell6.innerHTML = `<a onClick="Editar(this)">Editar</a>
-                       <a onClick="deletar(this)">Delete</a>`;
+    cell6.innerHTML = '<a onClick="Editar(this)">Editar</a><a onClick="deletar(this)">Delete</a>';
 }
 
 function resetarFormulario() {
@@ -142,15 +141,113 @@ function deletar(td) {
         resetarFormulario();
     }
 }
-function validate() {
-    isValid = true;
-    if (document.getElementById("nome").value == "") {
-        isValid = false;
-        document.getElementById("fullNameValidationError");
-    } else {
-        isValid = true;
-        if (!document.getElementById("fullNameValidationError"))
-            document.getElementById("fullNameValidationError");
+function dataNascimento(){
+    var datas = document.getElementById("data")
+    if (datas.value.length == 2 || datas.value.length == 5) {
+        datas.value += "/"
     }
+}
+function validate() {
+    debugger;
+    //nome
+     const regex = /[0-9]/;
+     var mensagem;
+    if (document.getElementById("nome").value == "" ) { 
+        mensagem = "\nCampo nome precisar ser preenchido";
+
+    } 
+
+    else if(document.getElementById("nome").value.length<3){
+        mensagem += "\nnome não pode conter menos de 3 caracteres.";
+
+    }
+
+    var nomeContemNumeros = regex.test(document.getElementById("nome").value);
+    if (nomeContemNumeros){
+        mensagem += "\nnome contem numeros";
+
+    }
+
+    //data
+        debugger;                  
+      var valida = document.getElementById("data").value; 
+      if (valida && valida.length == 10) {  // é válida, então ;)
+        var ano = data.substr(6),
+          mes = data.substr(3,2),
+          dia = data.substr(0,2),
+          M30 = ['04','06','09','11'],
+          v_mes = /(0[1-9])|(1[0-2])/.test(mes),
+          v_ano = /(19[1-9]\d)|(20\d\d)|2100/.test(ano),
+          rexpr = new RegExp(mes),
+          fev29 = ano % 4? 28: 29;
+
+        if (v_mes && v_ano) {
+          if (mes == '02') return (dia >= 1 && dia <= fev29);
+          else if (rexpr.test(M30)) return /((0[1-9])|([1-2]\d)|30)/.test(dia);
+          else return /((0[1-9])|([1-2]\d)|3[0-1])/.test(dia);
+        }
+      }    
+      else{
+              mensagem += "\nCampo data de nascimento obrigatório";
+
+      }
+    
+    //sexo
+    debugger;
+    var Masculino = document.getElementById("sexoMasculino").checked;
+    var Feminino = document.getElementById("sexoFeminino").checked;
+    if(!Masculino && !Feminino){
+        mensagem += "\nSelecione um Sexo";
+
+    }
+
+    //CheckBox
+    if(document.getElementById("Futebol").checked){
+        valid = true;
+    }
+    else if (document.getElementById("Pescar").checked){
+        valid = true;
+    }
+    else if (document.getElementById("Ler").checked){
+        valid = true;
+    }
+    else if (document.getElementById("Academia").checked){
+        valid = true;
+    }
+    else if (document.getElementById("Natação").checked){
+        valid = true;
+    }
+    else if (document.getElementById("Ciclismo").checked){
+        valid = true;
+    }
+
+    else{
+        mensagem += "\nSelecione um hobby";
+
+    }
+
+    //estado
+    var estado = document.getElementById("estado").selectedIndex;
+    if (estado == 0) {
+        mensagem += "\nInforme o Estado";
+
+    }
+    //Mensagem
+
+    if (document.getElementById("msg").value == "") { 
+        mensagem += "\nCampo mensagem é obrigatório.";
+
+    }
+    else if(document.getElementById("msg").value.length<3){
+        mensagem += "\nO campo mensagem não pode conter menos 3 caracteries.";
+
+    }
+
+    if (mensagem != ""){
+        alert(mensagem);
+        return false;
+    }
+
+
     return isValid;
 }

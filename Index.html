@@ -10,26 +10,29 @@
 
 <body>
 	    <fieldset>
-      <legend>Formulário</legend>
+      <legend class="form">Formulário</legend>
     <table>
         <tr>
             <td>
-                <form onsubmit="event.preventDefault();validacao();" autocomplete="off" id="formularioDados">
+                <form onsubmit="event.preventDefault();validacao();" autocomplete="off" id="formularioDados" name="formularioDados">
                     <div>
                         <label class="fonte">Nome Completo:*</label><label class="validation-error hide" id="nomeValidationError">
 						Este campo é obrigatório.</label>
                         <input type="text" name="nome" id="nome">
                     </div>
+                    <br>
                     <div>
                         <label class="fonte">Data de Nascimento:</label>
-                        <input type="date" name="data" id="data">
+                        <input type="text" name="data" id="data" maxlength="10" onkeyup="dataNascimento()">
                     </div>
+                    <br>
                     <div>
                         <label class="fonte">Sexo:</label>
                         <input type="radio" name="sexo" id="sexoMasculino" value="Masculino"> Masculino
         				<input type="radio" name="sexo" id="sexoFeminino" value="Feminino"> Feminino
                     </div>
-                    <div>
+                    <br>
+                    <div >
                         <label for="name" class="fonte">Hobby: </label>
 						<label><input type="checkbox" name="hobby" id="Futebol" value="Futebol">Futebol</label>
         				<label><input type="checkbox" name="hobby" id="Pescar" value="Pescar">Pescar</label>
@@ -38,10 +41,11 @@
         				<label><input type="checkbox" name="hobby" id="Natação" value="Natação">Natação</label>
         				<label><input type="checkbox" name="hobby" id="Ciclismo" value="Ciclismo">Ciclismo</label>
                     </div>
+                    <br>
                     <div>
                         
                         <label for="estado" class="fonte">Estado:</label>
-        					<select name="estado" id="estado" value="Selecione o Estado">
+        					<select name="estado" id="estado" value="Selecione o Estado" required>
         				    <option selected disabled>Selecione o Estado</option>
          					<option value="MS">Mato Grosso do Sul</option>
          					<option value="SP">São Paulo</option>
@@ -64,10 +68,12 @@
          					<option value="RR">Roraima</option>
         					</select>  
                     </div>
+                    <br>
                     <div>
                         <legend class="fonte">Mensagem:</legend>
         					<textarea type="text" name="msg" rows="5" cols="30" id="msg"></textarea>
                     </div>
+                    <br>
                     <div  class="form-action-buttons">
                         <button type="submit" value="Incluir">Incluir</button>
                         <button type="reset" id="botao_resetar" value="Limpar">Limpar</button>
